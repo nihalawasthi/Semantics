@@ -906,13 +906,14 @@ input[type="submit"]:active,
 }
 
 .kb-row-layout-id939_b041c7-55>.kt-row-layout-overlay {
-    opacity: 1;
     background-image: url('https://secy.co.in/storage/2021/12/jeremy-bezanger-QhYQ1230z4QZFo-unsplash.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+    margin-bottom: 0;
 }
 
 @media all and (max-width: 1024px) {
@@ -4164,6 +4165,7 @@ ul.menu .wp-block-kadence-advancedbtn .kb-btn939_3d507f-47.kb-button {
 }
 
 .kt-adv-heading939_b19bfd-99 {
+    display: block;
     position: absolute;
     top: 20px; /* Adjusted top spacing */
     margin-bottom: 20px;
@@ -4241,11 +4243,16 @@ ul.menu .wp-block-kadence-advancedbtn .kb-btn939_3d507f-47.kb-button {
 @media (max-width: 480px) {
     .progress {
         width: 95vw;
-        height: auto;
+        height: 90vh;
         padding: 10px;
     }
+    .inner-progress {
+        all: unset;
+        width: 100%;
+        margin-bottom: 0;
+    }
     .kt-adv-heading939_b19bfd-99 {
-        font-size: 1.4rem; /* Adjusted font size */
+        font-size: 1rem; /* Adjusted font size */
         top: 10px; /* Adjusted top spacing */
     }
     .progress .kt-adv-heading939_37d6e6-f3 {
@@ -4254,4 +4261,179 @@ ul.menu .wp-block-kadence-advancedbtn .kb-btn939_3d507f-47.kb-button {
     .progress .kt-inside-inner-col {
         width: 100%;
     }
+    .progress .wp-block-kadence-advancedbtn {
+        position: absolute;
+        bottom: 100px; /* Adjusted bottom spacing */
+    }
+}
+:root {
+    --image-size: 600px;
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.sub-heading {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.gallery {
+    position: relative;
+}
+
+.gallery .arrows {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.gallery .arrows .left,
+.gallery .arrows .right {
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery .arrows svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #000000;
+}
+
+.infobox-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #f0f0f0;
+}
+
+.kt-blocks-info-box-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.kt-blocks-info-box-text {
+    font-size: 1rem;
+}
+.kadence-column9_d018d6-22 {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #000000;
+    text-align: center;
+}
+
+.gallery {
+    max-width: 800px;
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery .slider {
+    display: flex;
+}
+
+.gallery .wrapper {
+    display: none;
+    transition: transform 0.5s ease-out, left 0.5s ease-out;
+}
+
+.gallery .wrapper:has(+ .selected) {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - var(--image-size) / 4);
+    transform: translate3d(-50%, -50%, 0) scale(0.5);
+    z-index: 2;
+}
+
+.gallery .selected {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(1); /* Adjusted scale for selected slide */
+    z-index: 3;
+}
+
+.gallery .selected + .wrapper {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: calc(50% + var(--image-size) / 4);
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    z-index: 2;
+}
+
+.gallery .selected + * + .wrapper {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: calc(50% + var(--image-size) / 2);
+    transform: translate3d(-50%, -50%, 0) scale(0.8);
+    z-index: 1;
+}
+
+.gallery .selected + * + * + .wrapper {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: calc(50% + var(--image-size));
+    transform: translate3d(-50%, -50%, 0) scale(0);
+    z-index: 0;
+}
+
+.gallery .arrows .left.disabled,
+.gallery .arrows .right.disabled {
+    opacity: 0.5;
+}
+
+.gallery .arrows .left::before,
+.gallery .arrows .right::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 3rem;
+    height: 4px;
+    transform: translateY(-50%);
+}
+
+
+.gallery img {
+    border-radius: 6px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
